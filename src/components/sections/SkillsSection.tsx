@@ -1,7 +1,7 @@
 import BlurFade from "@/components/magicui/blur-fade";
 import { Badge } from "@/components/ui/badge";
 import { DATA } from "@/data/resume";
-import img from "next/image";
+import Image from "next/image";
 import Marquee from "@/components/ui/marquee";
 
 const BLUR_FADE_DELAY = 0.04;
@@ -30,11 +30,13 @@ export function SkillsSection() {
           <div className="relative mt-6">
             <Marquee className="max-w-full [--duration:40s]">
               {companies.map((logo, idx) => (
-                <img
+                <Image
                   key={idx}
                   src={`https://portfolio-2-cnn.pages.dev/${logo}.svg`}
                   className="h-10 w-28"
                   alt={logo}
+                  width={24}
+                  height={24}
                 />
               ))}
             </Marquee>

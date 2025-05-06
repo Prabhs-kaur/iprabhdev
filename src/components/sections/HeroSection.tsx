@@ -2,7 +2,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import BlurFade from "@/components/magicui/blur-fade";
 import BlurFadeText from "@/components/magicui/blur-fade-text";
 import { DATA } from "@/data/resume";
-
+import Image from "next/image";
 const BLUR_FADE_DELAY = 0.04;
 
 export function HeroSection() {
@@ -21,10 +21,12 @@ export function HeroSection() {
             {/* Hide the arrow on small screens */}
             <div className="absolute -left-28 -top-10 -rotate-12 w-40 h-32 hidden sm:block">
               <BlurFade delay={BLUR_FADE_DELAY}  >
-                <img
+                <Image
                   src={DATA.arrow}
                   alt="Arrow pointing to avatar"
                   className="absolute left-0 w-40 transform rotate-45"
+                  width={24}
+                  height={24}
                 />
               </BlurFade>
             </div>
