@@ -181,8 +181,7 @@ export async function generateStaticParams() {
 
 // ✅ Dynamic metadata generation
 export async function generateMetadata({
-  params,
-}: PageProps): Promise<Metadata | undefined> {
+  params }: PageProps): Promise<Metadata | undefined> {
   const post = await getPost(params.slug);
 
   const {
