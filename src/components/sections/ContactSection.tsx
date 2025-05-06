@@ -14,7 +14,7 @@ export function ContactSection() {
               Contact
             </div>
             <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">
-              Let's Work Together
+              Let&apos;s Work Together
             
             </h2>
             
