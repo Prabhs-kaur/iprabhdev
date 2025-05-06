@@ -108,22 +108,21 @@
 // }
 
 
-
 import { getBlogPosts, getPost } from "@/data/blog";
 import { DATA } from "@/data/resume";
 import { formatDate } from "@/lib/utils";
-import type { Metadata } from "next";
+import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { Suspense } from "react";
 
-// ✅ Type for dynamic route params
+// Correcting the PageProps type to match Next.js expectations
 interface PageProps {
   params: {
     slug: string;
   };
 }
 
-// ✅ Main blog post page
+// Main Blog Page
 export default async function Blog({ params }: PageProps) {
   const post = await getPost(params.slug);
 
@@ -173,15 +172,20 @@ export default async function Blog({ params }: PageProps) {
   );
 }
 
-// ✅ Generate paths for dynamic routes
+// Generate static parameters for dynamic routes
 export async function generateStaticParams() {
   const posts = await getBlogPosts();
   return posts.map((post) => ({ slug: post.slug }));
 }
 
-// ✅ Dynamic metadata generation
+// Dynamic metadata generation for each post
 export async function generateMetadata({
-  params }: PageProps): Promise<Metadata | undefined> {
+  params,
+}: {
+  params: {
+    slug: string;
+  };
+}): Promise<Metadata | undefined> {
   const post = await getPost(params.slug);
 
   const {
@@ -214,3 +218,4 @@ export async function generateMetadata({
     },
   };
 }
+
